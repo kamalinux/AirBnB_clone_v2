@@ -20,3 +20,21 @@ class Place(BaseModel, Base):
     latitude = Column(Float, nullable=False, default=0)
     longitude = Column(Float, nullable=False, default=0)
     amenity_ids = []
+
+    # Establishes a relationship between Reviews and Places
+    reviews = relationship("Review", cascade="all, delete", backref="place")
+
+    @property
+    def reviews(self):
+        """ Returns a dictionary of all reviews with a place_id
+            matching this instance's id
+        """
+        from models.__init__ import storage
+        from models.review import Review
+        # Create empty dictionary
+        r_dict = {}
+
+        # Fill with all reviews whose place_id match this instance's id
+        for key, value in storage.all(Review).items():
+            if value.to_dict()['place_id'] == self.id:
+                r_dict[key] = value
