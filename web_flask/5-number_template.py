@@ -16,7 +16,7 @@ variable (replace underscore _ symbols with a space ).
 - Routes: /number_template/<n>: display a HTML page only if n is an integer:
 H1 tag: "Number: n" inside the tag BODY
 """
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
