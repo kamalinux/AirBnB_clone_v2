@@ -88,6 +88,7 @@ def tear_down(self):
     storage.close()
 
 
+@app.route('/states/', strict_slashes=False)
 @app.route('/states_list', strict_slashes=False)
 def html_fetch_states():
     """ Function called with /states_list route """
@@ -104,7 +105,7 @@ def html_fetch_cities_by_states():
                            state_objs=state_objs)
 
 
-@app.route('/states/<id>')
+@app.route('/states/<id>', strict_slashes=False)
 def html_if_stateID(id):
     """display html page; customize heading with state.name
        fetch sorted cities for this state ID into LI tag ->in HTML file
@@ -117,6 +118,7 @@ def html_if_stateID(id):
                            state_obj=state_obj)
 
 
+@app.route('/hbnb_filters/', strict_slashes=False)
 def html_filters():
     """display html page with working city/state filters & amenities
        runs with web static css files
