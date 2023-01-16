@@ -48,8 +48,10 @@ section.filters button:hover {
     background-color: #FAFAFA;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
+    max-height: 300px;
     position: relative;
     z-index: 1;
+    overflow: auto;
 }
 
 .popover h2 {
